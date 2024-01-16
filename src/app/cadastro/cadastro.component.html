@@ -88,7 +88,7 @@
         #cep="ngModel"
         id="cep"
         class="campo__escrita"
-        (blur)="consultaCep($event)"
+        (blur)="consultaCep($event, f)"
       />
 
       <div *ngIf="cep?.invalid && cep?.touched || cep?.dirty">
