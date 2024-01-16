@@ -35,6 +35,7 @@ export class CadastroComponent implements OnInit {
   }
 
   populandoEndereco(data: any, f: NgForm) {
+    console.log(data.logradouro)
     f.form.patchValue({
       endereco: data.logradouro,
       complemento: data.complemento,

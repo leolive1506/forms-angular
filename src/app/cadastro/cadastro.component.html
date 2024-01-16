@@ -84,7 +84,7 @@
       <input
         name="cep"
         ngModel
-        required pattern="^(\d{5})(-?\d{3})$" minlength="8" maxlength="9"
+        required pattern="^(\d{5})(-?\d{3})$" minlength="8" maxlength="9" validadorCep
         #cep="ngModel"
         id="cep"
         class="campo__escrita"
@@ -94,6 +94,7 @@
       <div *ngIf="cep?.invalid && cep?.touched || cep?.dirty">
         <app-mensagem *ngIf="cep?.errors?.['required']" mensagem="O cep é obrigatório"></app-mensagem>
         <app-mensagem *ngIf="cep?.errors?.['pattern']" mensagem="Digite um cep valido (Ex: 00000-000)"></app-mensagem>
+        <app-mensagem *ngIf="cep?.errors?.['validadorCep']" mensagem="O cep informado não existe"></app-mensagem>
       </div>
     </div>
 
