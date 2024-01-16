@@ -42,3 +42,8 @@
   <span class="erro__texto" *ngIf="nome?.errors?.['minlength']">O nome deve ter no minimo 2 caracteres</span>
 </div>
 ```
+
+# Criar diretiva personalizada
+```sh
+ ng g directive directives/nomeDiretiva
+```

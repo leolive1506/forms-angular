@@ -25,7 +25,21 @@
     <div class="formulario__dupla">
       <div class="formulario__campo">
         <label class="campo__etiqueta" for="nascimento">Nascimento</label>
-        <input name="nascimento" ngModel id="nascimento" type="date" class="campo__escrita"/>
+        <input
+          name="nascimento"
+          ngModel
+          required maiorIdadeValidator
+          #nascimento="ngModel"
+          id="nascimento"
+          type="date"
+          class="campo__escrita"
+        />
+        
+        <div *ngIf="nascimento?.invalid && nascimento?.touched || nascimento?.dirty">
+          <app-mensagem *ngIf="nascimento?.errors?.['required']" mensagem="A data de nascimento é obrigatório"></app-mensagem>
+          <br>
+          <app-mensagem *ngIf="nascimento?.errors?.['maiorIdadeValidator']" mensagem="O usuário deve ter mais de 18 anos"></app-mensagem>
+        </div>
       </div>
       <div class="formulario__campo">
         <label class="campo__etiqueta" for="telefone">Contato</label>
