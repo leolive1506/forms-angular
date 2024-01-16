@@ -1,80 +1,30 @@
-# Formulários Angular
-1. Template drive
-- todo implementado no template do componente
-- necessita da importação do módulo **FormsModule**
-- funciona de forma assincrona
-2. Data drive ou Reactive Forms
-- Toda lógica é feita no componente
-- Necessário importar o modulo **ReactiveFormsModule**
-- Funciona de forma sincrona
+# 🚀 App
+Aplicativo de cadastro simples explorando conceitos de formulários orientado a templates (Template drive)
 
-# Template drive
-- Criar uma variavel de referencia do formulario
-```html
-<!-- #f atraves dessa variavel acessa recurso que ngForm vai disponibilizar -->
-<form #f="ngForm"></form>
-```
-- ngModel
-  - faz referencia ao name do input e cria instancia de cada modelo do formulario 
-  - ngForm valida form por inteiro, ngModel valida por input
-  - tem algumas diretivas pra usar no input semalhantes html puro
-```html
-<input
-  name="nome"
-  id="nome"
-  class="campo__escrita"
-  ngModel
-  required
-  minlength="2"
-  #nome="ngModel"
->
+## 🔗 Links
+[![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://portfolio-leo-santam.vercel.app/)
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/leonardolopessantana/)
 
-<!-- f.controls['nome']?.dirty -> campo foi mexido -->
-<!-- <div
-  *ngIf="f.controls['nome']?.invalid && f.controls['nome']?.touched || f.controls['nome']?.dirty">
-  <span class="erro__texto" *ngIf="f.controls['nome']?.errors?.['required']">O nome é obrigatório</span>
-  <span class="erro__texto" *ngIf="f.controls['nome']?.errors?.['minlength']">O nome deve ter no minimo 2 caracteres</span>
-</div> -->
-<div
-  *ngIf="nome?.invalid && nome?.touched || nome?.dirty"
->
-  <span class="erro__texto" *ngIf="nome?.errors?.['required']">O nome é obrigatório</span>
-  <span class="erro__texto" *ngIf="nome?.errors?.['minlength']">O nome deve ter no minimo 2 caracteres</span>
-</div>
-```
+## 🛠 Stack utilizada
+![Angular](https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white)
+![Typescript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![Javascript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![Git](https://img.shields.io/badge/git-100000?style=for-the-badge&logo=git&logoColor=white)
+![Github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)
+![CSS](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![HTML](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+<br>
 
-# Criar diretiva personalizada
-```sh
- ng g directive directives/nomeDiretiva
-```
-```ts
-// configurar pra dizer que é uma validadora e pertence as diretivas validadoras do angular
-@Directive({
-  selector: '[maiorIdadeValidator]',
-  providers: [{
-    provide: NG_VALIDATORS, // permite adicionar novas diretivas validadoras
-    useExisting: MaiorIdadeDirective,
-    multi: true
-  }]
-})
-export class MaiorIdadeDirective implements Validator {
-  validate(control: AbstractControl): ValidationErrors | null {}
-}
-```
+## Demonstração
 
-# Mais sobre diretivas
-São classes que adicionam ou modificam um comportamento na DOM. Funcionam com funções que são chamadas quando o compilador as encontra
-## Tipos
-1. Diretivas de atributos
-- alteram aparencia e comportamento dos elementos DOM e componentes
-  - alterando estilos, invisiveis, etc
-  - ex: ngClass, ngStyle, ngModel
-2. Diretivas estruturais
-- alteram estrutura da DOM
-- os nomes vem com prefixo "*"
-- adicionam ou removem elementos da DOM
-- ex: ngFor, ngIf, ngSwitch
-3. Componentes
-- componente é uma diretiva
-- componente é uma diretiva com um template
-- as diretivas basicamente manipulam DOM e o que é feito num componente é basicamente mostrar algo no DOM
+- [Curto video](https://www.loom.com/share/7b17a9ff9ea3463db4ce3295653f8ca3)
+
+## Aprendizados
+Explorado conceitos bases do Template drive, tais como: 
+- diferença entre Template drive e Data drive ou Reactive forms
+- Criar variavel referencia no formulário
+- Diretivas
+- Criar diretiva personalizada
+
+## Links
+- [Explicação de conceitos](https://github.com/leolive1506/template-drive-forms-angular/blob/main/conceitos.md)
