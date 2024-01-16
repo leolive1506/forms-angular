@@ -47,3 +47,34 @@
 ```sh
  ng g directive directives/nomeDiretiva
 ```
+```ts
+// configurar pra dizer que é uma validadora e pertence as diretivas validadoras do angular
+@Directive({
+  selector: '[maiorIdadeValidator]',
+  providers: [{
+    provide: NG_VALIDATORS, // permite adicionar novas diretivas validadoras
+    useExisting: MaiorIdadeDirective,
+    multi: true
+  }]
+})
+export class MaiorIdadeDirective implements Validator {
+  validate(control: AbstractControl): ValidationErrors | null {}
+}
+```
+
+# Mais sobre diretivas
+São classes que adicionam ou modificam um comportamento na DOM. Funcionam com funções que são chamadas quando o compilador as encontra
+## Tipos
+1. Diretivas de atributos
+- alteram aparencia e comportamento dos elementos DOM e componentes
+  - alterando estilos, invisiveis, etc
+  - ex: ngClass, ngStyle, ngModel
+2. Diretivas estruturais
+- alteram estrutura da DOM
+- os nomes vem com prefixo "*"
+- adicionam ou removem elementos da DOM
+- ex: ngFor, ngIf, ngSwitch
+3. Componentes
+- componente é uma diretiva
+- componente é uma diretiva com um template
+- as diretivas basicamente manipulam DOM e o que é feito num componente é basicamente mostrar algo no DOM
