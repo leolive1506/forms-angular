@@ -24,18 +24,41 @@
     <div class="formulario__dupla">
       <div class="formulario__campo">
         <label class="campo__etiqueta" for="nascimento">Nascimento</label>
-        <input name="nascimento" id="nascimento" type="date" class="campo__escrita"/>
+        <input name="nascimento" ngModel id="nascimento" type="date" class="campo__escrita"/>
       </div>
       <div class="formulario__campo">
         <label class="campo__etiqueta" for="telefone">Contato</label>
-        <input name="telefone" id="telefone" type="tel" placeholder="(XX) XXXXX-XXXX" class="campo__escrita"/>
+        <input
+          name="telefone"
+          ngModel
+          requied pattern="(\(?\d{2}\)?\s?)(\d{5}\-?\d{4})"
+          id="telefone"
+          type="tel"
+          placeholder="(XX) XXXXX-XXXX" class="campo__escrita"/>
+          <div *ngIf="f.controls['telefone']?.invalid && f.controls['telefone']?.touched || f.controls['telefone']?.dirty">
+            <span class="erro__texto" *ngIf="f.controls['telefone']?.errors?.['required']">O telefone é obrigatório</span>
+            <span class="erro__texto" *ngIf="f.controls['telefone']?.errors?.['pattern']">O telefone precisa ser válido</span>
+          </div>
       </div>
     </div>
     <div class="formulario__campo">
       <label class="campo__etiqueta" for="email">E-mail</label>
-      <input name="email" id="email" type="email" class="campo__escrita"/>
+      <!-- já fornece validação email por padrão, mas não valida .com -->
+      <input
+        name="email"
+        ngModel
+        required pattern="^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$"
+        id="email"
+        type="email"
+        class="campo__escrita"
+      />
     </div>
-
+      <!-- f.controls['nome']?.dirty -> campo foi mexido -->
+      <div *ngIf="f.controls['email']?.invalid && f.controls['email']?.touched || f.controls['email']?.dirty">
+        <span class="erro__texto" *ngIf="f.controls['email']?.errors?.['required']">O email é obrigatório</span>
+        <!-- <span class="erro__texto" *ngIf="f.controls['email']?.errors?.['email']">O email deve conter @ e .com</span> -->
+        <span class="erro__texto" *ngIf="f.controls['email']?.errors?.['pattern']">O email deve conter @ e .com</span>
+      </div>
 
     <h3 class="principal__subtitulo">Endereço</h3>
 
