@@ -26,13 +26,19 @@
   ngModel
   required
   minlength="2"
+  #nome="ngModel"
 >
 
 <!-- f.controls['nome']?.dirty -> campo foi mexido -->
-<div
-  *ngIf="f.controls['nome']?.invalid && f.controls['nome']?.touched || f.controls['nome']?.dirty"
->
+<!-- <div
+  *ngIf="f.controls['nome']?.invalid && f.controls['nome']?.touched || f.controls['nome']?.dirty">
   <span class="erro__texto" *ngIf="f.controls['nome']?.errors?.['required']">O nome é obrigatório</span>
   <span class="erro__texto" *ngIf="f.controls['nome']?.errors?.['minlength']">O nome deve ter no minimo 2 caracteres</span>
+</div> -->
+<div
+  *ngIf="nome?.invalid && nome?.touched || nome?.dirty"
+>
+  <span class="erro__texto" *ngIf="nome?.errors?.['required']">O nome é obrigatório</span>
+  <span class="erro__texto" *ngIf="nome?.errors?.['minlength']">O nome deve ter no minimo 2 caracteres</span>
 </div>
 ```
